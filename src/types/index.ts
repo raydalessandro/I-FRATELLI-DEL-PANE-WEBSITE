@@ -13,7 +13,7 @@ export interface Product {
   price: number | null;
   priceNote?: string;
   unit: string;
-  minOrder?: number;
+  minOrder?: number | null;
   image: string;
   images?: string[];
   available: boolean;
@@ -23,10 +23,12 @@ export interface Product {
   updatedAt: string;
 }
 
-export type ProductCategory = 
+export type ProductCategory =
   | 'pani-classici'
   | 'pani-speciali'
+  | 'pizza-focaccia'
   | 'formati-ristorazione'
+  | 'dolci'
   | 'su-richiesta';
 
 export interface ProductCategoryInfo {

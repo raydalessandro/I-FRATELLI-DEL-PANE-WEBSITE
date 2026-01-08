@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import type { ProductCategory } from '../types';
 
 // Generic content loader hook
 export function useContent<T>(filename: string): {
@@ -141,7 +142,7 @@ export function useB2BContent() {
 export function useProductsContent() {
   return useContent<{
     categories: Array<{
-      id: string;
+      id: ProductCategory;
       name: string;
       description: string;
     }>;
@@ -149,7 +150,7 @@ export function useProductsContent() {
       id: string;
       name: string;
       slug: string;
-      category: string;
+      category: ProductCategory;
       shortDescription: string;
       description: string;
       price: number | null;
