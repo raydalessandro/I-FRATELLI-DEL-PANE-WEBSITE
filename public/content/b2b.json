@@ -1,0 +1,54 @@
+{
+  "hero": {
+    "badge": "Per Professionisti",
+    "title": "Per Ristoranti e Locali",
+    "subtitle": "Il tuo fornitore di pane di fiducia",
+    "description": "Consegne ogni mattina, pane sempre fresco, prezzi dedicati. Siamo il partner ideale per chi cerca qualità e affidabilità."
+  },
+  "benefits": [
+    {
+      "title": "Consegne Puntuali",
+      "description": "Ogni mattina dalle 5:30, pane fresco alla porta del tuo locale."
+    },
+    {
+      "title": "Sempre Fresco",
+      "description": "Sforniamo di notte per consegnare all'alba. Zero pane del giorno prima."
+    },
+    {
+      "title": "Prezzi Dedicati",
+      "description": "Listino riservato ai professionisti. Più ordini, più risparmi."
+    },
+    {
+      "title": "Formati Custom",
+      "description": "Panini, pagnotte, formati speciali. Li facciamo come li vuoi tu."
+    }
+  ],
+  "advantages": [
+    "Consegne ogni mattina dalle 5:30",
+    "Pane sempre fresco, sfornato nella notte",
+    "Listino prezzi dedicato ai professionisti",
+    "Formati personalizzati su richiesta",
+    "Nessun minimo d'ordine il primo mese",
+    "Prova gratuita senza impegno",
+    "Assistenza dedicata via WhatsApp",
+    "Fatturazione mensile"
+  ],
+  "cta": {
+    "title": "Inizia con una Prova Gratuita",
+    "description": "Vogliamo che tu possa toccare con mano la qualità dei nostri prodotti. Per questo offriamo una prima consegna gratuita, senza impegno.",
+    "buttonWhatsapp": "Richiedi Prova Gratuita",
+    "buttonPhone": "Oppure Chiamaci"
+  },
+  "testimonials": [
+    {
+      "quote": "Da quando lavoriamo con loro, i clienti ci fanno i complimenti per il pane. Puntuali, affidabili, qualità costante.",
+      "author": "Marco R.",
+      "business": "Ristorante, zona Navigli"
+    },
+    {
+      "quote": "Finalmente un fornitore che risponde su WhatsApp e risolve i problemi in tempo reale. Il pane poi è eccezionale.",
+      "author": "Sara L.",
+      "business": "Bistrot, zona Isola"
+    }
+  ]
+}

@@ -1,0 +1,145 @@
+{
+  "categories": [
+    {
+      "id": "pani-classici",
+      "name": "Pani Classici",
+      "description": "I grandi classici della tradizione"
+    },
+    {
+      "id": "pani-speciali",
+      "name": "Pani Speciali",
+      "description": "Varietà con cereali e ingredienti selezionati"
+    },
+    {
+      "id": "pizza-focaccia",
+      "name": "Pizza e Focaccia",
+      "description": "Tranci e focacce sempre calde"
+    },
+    {
+      "id": "formati-ristorazione",
+      "name": "Formati Ristorazione",
+      "description": "Formati pensati per ristoranti e bar"
+    },
+    {
+      "id": "dolci",
+      "name": "Dolci e Brioche",
+      "description": "Cornetti, brioche e dolci freschi"
+    }
+  ],
+  "products": [
+    {
+      "id": "pagnotta-classica",
+      "name": "Pagnotta Classica",
+      "slug": "pagnotta-classica",
+      "category": "pani-classici",
+      "shortDescription": "Il nostro pane simbolo, crosta croccante e mollica soffice.",
+      "description": "Farina tipo 1, lievito madre, acqua, sale. 24 ore di lievitazione naturale. Peso circa 1kg.",
+      "price": null,
+      "priceNote": "Prezzo su richiesta",
+      "unit": "kg",
+      "minOrder": null,
+      "image": "/images/products/pagnotta-classica.jpg",
+      "images": [],
+      "available": true,
+      "featured": true,
+      "tags": ["lievito madre", "classico"],
+      "createdAt": "2025-01-08",
+      "updatedAt": "2025-01-08"
+    },
+    {
+      "id": "pizza-patate",
+      "name": "Pizza con le Patate",
+      "slug": "pizza-patate",
+      "category": "pizza-focaccia",
+      "shortDescription": "La nostra specialità. Patate, rosmarino, olio extravergine.",
+      "description": "Trancio di pizza bianca con patate a fette sottili, rosmarino fresco e olio extravergine. Una delle cose più buone che assaggerai.",
+      "price": null,
+      "priceNote": "Prezzo al trancio",
+      "unit": "trancio",
+      "minOrder": null,
+      "image": "/images/products/pizza-patate.jpg",
+      "images": [],
+      "available": true,
+      "featured": true,
+      "tags": ["pizza", "specialità"],
+      "createdAt": "2025-01-08",
+      "updatedAt": "2025-01-08"
+    },
+    {
+      "id": "pane-integrale",
+      "name": "Pane Integrale",
+      "slug": "pane-integrale",
+      "category": "pani-speciali",
+      "shortDescription": "Farina integrale macinata a pietra, ricco di fibre.",
+      "description": "Pane integrale con farina macinata a pietra. Lievitazione naturale 24 ore. Perfetto per chi cerca un pane più rustico e nutriente.",
+      "price": null,
+      "priceNote": "Prezzo su richiesta",
+      "unit": "kg",
+      "minOrder": null,
+      "image": "/images/products/pane-integrale.jpg",
+      "images": [],
+      "available": true,
+      "featured": true,
+      "tags": ["integrale", "salutare"],
+      "createdAt": "2025-01-08",
+      "updatedAt": "2025-01-08"
+    },
+    {
+      "id": "focaccia-olio",
+      "name": "Focaccia all'Olio",
+      "slug": "focaccia-olio",
+      "category": "pizza-focaccia",
+      "shortDescription": "Focaccia soffice con olio extravergine e sale marino.",
+      "description": "Focaccia classica preparata con olio extravergine di oliva e sale marino. Perfetta come accompagnamento o per una pausa gustosa.",
+      "price": null,
+      "priceNote": "Prezzo al trancio",
+      "unit": "trancio",
+      "minOrder": null,
+      "image": "/images/products/focaccia-olio.jpg",
+      "images": [],
+      "available": true,
+      "featured": true,
+      "tags": ["focaccia", "classico"],
+      "createdAt": "2025-01-08",
+      "updatedAt": "2025-01-08"
+    },
+    {
+      "id": "panini-ristorante",
+      "name": "Panini per Ristorante",
+      "slug": "panini-ristorante",
+      "category": "formati-ristorazione",
+      "shortDescription": "Panini formato ristorante, perfetti per il servizio.",
+      "description": "Panini di varie dimensioni specificamente pensati per ristoranti. Disponibili in diversi formati e con diverse farine.",
+      "price": null,
+      "priceNote": "Listino B2B disponibile",
+      "unit": "pz",
+      "minOrder": 20,
+      "image": "/images/products/panini-ristorante.jpg",
+      "images": [],
+      "available": true,
+      "featured": false,
+      "tags": ["b2b", "ristoranti"],
+      "createdAt": "2025-01-08",
+      "updatedAt": "2025-01-08"
+    },
+    {
+      "id": "cornetto-classico",
+      "name": "Cornetto Classico",
+      "slug": "cornetto-classico",
+      "category": "dolci",
+      "shortDescription": "Cornetto sfogliato, fragrante e burroso.",
+      "description": "Cornetto sfogliato preparato con burro di alta qualità. Perfetto per la colazione, vuoto o farcito.",
+      "price": null,
+      "priceNote": "Prezzo al pezzo",
+      "unit": "pz",
+      "minOrder": null,
+      "image": "/images/products/cornetto.jpg",
+      "images": [],
+      "available": true,
+      "featured": false,
+      "tags": ["dolci", "colazione"],
+      "createdAt": "2025-01-08",
+      "updatedAt": "2025-01-08"
+    }
+  ]
+}
