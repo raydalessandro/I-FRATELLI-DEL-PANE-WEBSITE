@@ -1,14 +1,29 @@
 import { motion } from 'framer-motion';
 import { Wheat } from 'lucide-react';
 import { SEO } from '../components/SEO';
-import { aboutContent } from '../data/site';
+import { useSiteContent } from '../hooks/useContent';
 
 export function AboutPage() {
+  const { data: siteData, loading } = useSiteContent();
+
+  if (loading || !siteData) {
+    return (
+      <div className="min-h-screen bg-farina-100 flex items-center justify-center">
+        <div className="text-center">
+          <Wheat className="w-16 h-16 text-granite-600 animate-pulse mx-auto mb-4" />
+          <p className="text-granite-600">Caricamento...</p>
+        </div>
+      </div>
+    );
+  }
+
+  const { about } = siteData;
+
   return (
     <>
       <SEO
         title="Chi Siamo"
-        description="La storia del Pane dei Fratelli. Dal 1979 portiamo sulle tavole di Milano il pane fatto come una volta."
+        description={about.intro}
         url="/chi-siamo"
       />
 
@@ -19,8 +34,8 @@ export function AboutPage() {
               <Wheat className="w-4 h-4" />
               La Nostra Storia
             </span>
-            <h1 className="font-display text-display-lg text-granite-950 mb-6">{aboutContent.title}</h1>
-            <p className="font-accent text-2xl text-granite-600 italic">{aboutContent.subtitle}</p>
+            <h1 className="font-display text-display-lg text-granite-950 mb-6">{about.title}</h1>
+            <p className="font-accent text-2xl text-granite-600 italic">{about.subtitle}</p>
           </motion.div>
         </div>
       </section>
@@ -29,9 +44,9 @@ export function AboutPage() {
         <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <p className="text-2xl font-display text-granite-950 mb-8">{aboutContent.intro}</p>
+              <p className="text-2xl font-display text-granite-950 mb-8">{about.intro}</p>
               <div className="space-y-6 text-granite-600 leading-relaxed">
-                {aboutContent.story.map((paragraph, index) => (
+                {about.story.map((paragraph, index) => (
                   <p key={index}>{paragraph}</p>
                 ))}
               </div>
@@ -53,13 +68,22 @@ export function AboutPage() {
         <div className="container-custom">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
             <h2 className="font-display text-display-md text-granite-950 mb-4">I Nostri Valori</h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-granite-600 to-granite-400 rounded-full mx-auto" />
+            <div className="divider-center" />
           </motion.div>
           <div className="grid md:grid-cols-3 gap-8">
-            {aboutContent.values.map((value, index) => (
-              <motion.div key={value.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }} className="bg-white rounded-2xl p-8 text-center shadow-warm">
-                <div className="text-5xl mb-6">{value.icon}</div>
-                <h3 className="font-display text-xl font-semibold text-granite-950 mb-4">{value.title}</h3>
+            {about.values.map((value, index) => (
+              <motion.div
+                key={value.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white rounded-2xl p-8 shadow-warm text-center"
+              >
+                <div className="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-granite-100 to-granite-200 rounded-2xl flex items-center justify-center">
+                  <Wheat className="w-10 h-10 text-granite-600" />
+                </div>
+                <h3 className="font-display text-xl font-semibold text-granite-950 mb-3">{value.title}</h3>
                 <p className="text-granite-600">{value.description}</p>
               </motion.div>
             ))}
