@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ChefHat, Truck, Clock, Award, CheckCircle, ArrowRight, MessageCircle } from 'lucide-react';
+import { ChefHat, CheckCircle, MessageCircle } from 'lucide-react';
 import { SEO } from '../components/SEO';
 import { siteConfig, b2bContent } from '../data/site';
 

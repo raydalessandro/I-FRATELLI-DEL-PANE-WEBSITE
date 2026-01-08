@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, Truck, Clock, Award, Users, ChefHat, Wheat } from 'lucide-react';
+import { ArrowRight, Truck, Clock, Award, ChefHat, Wheat } from 'lucide-react';
 import { useProducts } from '../context/ProductsContext';
-import { siteConfig, heroContent, aboutContent, b2bContent } from '../data/site';
+import { siteConfig, heroContent, b2bContent } from '../data/site';
 import { productCategories } from '../data/products';
 import { SEO } from '../components/SEO';
 
