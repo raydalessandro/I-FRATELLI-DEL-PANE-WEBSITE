@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Preconnect per performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Font ottimizzati -->
+    <link 
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" 
+      rel="stylesheet" 
+    />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    
+    <!-- Primary Meta Tags -->
+    <title>Il Pane dei Fratelli | Panificio Artigianale Milano - Forniture B2B</title>
+    <meta name="title" content="Il Pane dei Fratelli | Panificio Artigianale Milano - Forniture B2B" />
+    <meta name="description" content="Panificio artigianale a Milano, zona Isola. Forniture pane fresco per ristoranti, bar e locali. Lievito madre, metodi tradizionali dal 1979. Consegne ogni mattina." />
+    <meta name="keywords" content="panificio milano, pane artigianale, forniture pane ristoranti, panificio isola milano, pane lievito madre, fornitore pane b2b" />
+    <meta name="author" content="Il Pane dei Fratelli" />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ilpanedeifratelli.it/" />
+    <meta property="og:title" content="Il Pane dei Fratelli | Panificio Artigianale Milano" />
+    <meta property="og:description" content="Panificio artigianale a Milano. Forniture pane fresco per ristoranti e locali. Lievito madre, tradizione dal 1979." />
+    <meta property="og:image" content="https://ilpanedeifratelli.it/og-image.jpg" />
+    <meta property="og:locale" content="it_IT" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://ilpanedeifratelli.it/" />
+    <meta property="twitter:title" content="Il Pane dei Fratelli | Panificio Artigianale Milano" />
+    <meta property="twitter:description" content="Panificio artigianale a Milano. Forniture pane fresco per ristoranti e locali." />
+    <meta property="twitter:image" content="https://ilpanedeifratelli.it/og-image.jpg" />
+
+    <!-- Geo Tags -->
+    <meta name="geo.region" content="IT-MI" />
+    <meta name="geo.placename" content="Milano" />
+    <meta name="geo.position" content="45.4906;9.1874" />
+    <meta name="ICBM" content="45.4906, 9.1874" />
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#8B6F47" />
+    <meta name="msapplication-TileColor" content="#8B6F47" />
+
+    <!-- Structured Data - LocalBusiness -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Bakery",
+        "name": "Il Pane dei Fratelli",
+        "image": "https://ilpanedeifratelli.it/images/logo.jpg",
+        "url": "https://ilpanedeifratelli.it",
+        "telephone": "+393761446128",
+        "priceRange": "€€",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Via Example 123",
+          "addressLocality": "Milano",
+          "addressRegion": "MI",
+          "postalCode": "20100",
+          "addressCountry": "IT"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 45.4906,
+          "longitude": 9.1874
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            "opens": "06:00",
+            "closes": "20:00"
+          }
+        ],
+        "sameAs": [
+          "https://www.instagram.com/ilpanedeifratelli"
+        ],
+        "description": "Panificio artigianale a Milano, zona Isola. Forniture pane fresco per ristoranti, bar e locali. Lievito madre, metodi tradizionali dal 1979.",
+        "foundingDate": "1979",
+        "areaServed": {
+          "@type": "City",
+          "name": "Milano"
+        },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Prodotti da Forno",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Product",
+                "name": "Pane Artigianale"
+              }
+            }
+          ]
+        }
+      }
+    </script>
+
+    <!-- Critical CSS will be inlined here by build -->
+    <style>
+      /* Critical CSS - Above the fold */
+      :root {
+        --granite-950: #1A1A1A;
+        --granite-600: #8B6F47;
+        --farina-100: #FAF7F2;
+      }
+      body {
+        margin: 0;
+        background-color: var(--farina-100);
+        font-family: 'Source Sans 3', system-ui, sans-serif;
+      }
+      .loading-screen {
+        position: fixed;
+        inset: 0;
+        background: var(--farina-100);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        transition: opacity 0.3s ease;
+      }
+      .loading-screen.hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+      <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="30" cy="30" r="25" stroke="#8B6F47" stroke-width="2" stroke-dasharray="157" stroke-dashoffset="0">
+          <animate attributeName="stroke-dashoffset" values="0;157;0" dur="2s" repeatCount="indefinite" />
+        </circle>
+      </svg>
+    </div>
+
+    <!-- App Root -->
+    <div id="root"></div>
+
+    <!-- Module Script -->
+    <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Hide loading screen when app loads -->
+    <script>
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          document.getElementById('loading-screen').classList.add('hidden');
+        }, 300);
+      });
+    </script>
+
+    <!-- NoScript fallback -->
+    <noscript>
+      <style>.loading-screen { display: none; }</style>
+      <div style="padding: 2rem; text-align: center; font-family: Georgia, serif;">
+        <h1>Il Pane dei Fratelli</h1>
+        <p>Panificio Artigianale Milano</p>
+        <p>Per visualizzare questo sito è necessario abilitare JavaScript.</p>
+        <p><a href="https://wa.me/393761446128">Contattaci su WhatsApp</a></p>
+      </div>
+    </noscript>
+  </body>
+</html>
