@@ -1,0 +1,77 @@
+{
+  "googleRating": 4.2,
+  "googleReviewCount": 41,
+  "googleLink": "https://www.google.com/search?q=Il+Pane+Dei+Fratelli+Panificio+Recensioni",
+  "featured": [
+    {
+      "author": "Franco T.",
+      "rating": 5,
+      "date": "2024-05",
+      "text": "Buono tutto, davvero. Ma il trancio di pizza con le patate è di un livello superiore. È probabilmente una delle cose più buone che io abbia mai mangiato in vita mia.",
+      "highlight": true
+    },
+    {
+      "author": "Romy B.",
+      "rating": 5,
+      "date": "2021",
+      "text": "I have been to other bakeries, and this is the best one so far! The customer service is outstanding! Fresh bread and pizza all day long. Good people, they make you feel like family.",
+      "highlight": false
+    },
+    {
+      "author": "Amber B.",
+      "rating": 5,
+      "date": "2022",
+      "text": "Highly recommend this 24hr bakery in Milan. 5 minute walk from Milano Porta Garibaldi so it's perfect to pop in for a quick bite. Outstanding customer service and incredibly friendly.",
+      "highlight": false
+    },
+    {
+      "author": "Amy J.",
+      "rating": 5,
+      "date": "2022",
+      "text": "The owner allowed us to stay there until our train came. A family owned business, very friendly and welcoming with incredible pastries.",
+      "highlight": false
+    },
+    {
+      "author": "David B.",
+      "rating": 5,
+      "date": "2024",
+      "text": "Best bakery in the area. Fresh, tasty and fairly priced.",
+      "highlight": false
+    },
+    {
+      "author": "Ayman R.",
+      "rating": 5,
+      "date": "2023",
+      "text": "Ottimo servizio notturno con ampia scelta di prodotti sempre freschi. Personale gentile e cortese. Ci ritornerò sicuramente.",
+      "highlight": false
+    },
+    {
+      "author": "Andrew",
+      "rating": 5,
+      "date": "2024-10",
+      "text": "I am a foreigner and stayed for 5 days nearby. I am very delighted by this bakery. I tried a panino, focaccia and focaccia with ham and cheese - all of them were excellent.",
+      "highlight": false
+    },
+    {
+      "author": "Pedro M.",
+      "rating": 5,
+      "date": "2024-08",
+      "text": "Estivemos em Milão e posso dizer que são as melhores Pizzas, o Pão e Brioche de Itália!",
+      "highlight": false
+    },
+    {
+      "author": "Ilyass B.",
+      "rating": 5,
+      "date": "2022",
+      "text": "Ottimo per calmare l'appetito post serata, personale molto disponibile e i prezzi sono più che ragionevoli. Ve lo consiglio a tutti.",
+      "highlight": false
+    },
+    {
+      "author": "Mr Mido",
+      "rating": 5,
+      "date": "2024-04",
+      "text": "La pizza è buonissima, il pane è favoloso sempre caldo. Sono gentili e educati.",
+      "highlight": false
+    }
+  ]
+}

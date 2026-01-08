@@ -2,8 +2,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Truck, Clock, Award, ChefHat, Wheat } from 'lucide-react';
 import { useProducts } from '../context/ProductsContext';
-import { siteConfig, heroContent, b2bContent } from '../data/site';
-import { productCategories } from '../data/products';
+import { useSiteContent, useB2BContent, useContactContent, useProductsContent } from '../hooks/useContent';
 import { SEO } from '../components/SEO';
 
 // Animation variants
@@ -21,23 +20,49 @@ const stagger = {
   }
 };
 
+// Icon mapping for features
+const featureIcons: Record<string, any> = {
+  'Lievito Madre': Wheat,
+  '24 Ore di Lievitazione': Clock,
+  'Aperti 24h': Clock,
+  'Consegne Puntuali': Truck,
+  'Dal 1979': Award,
+};
+
 export function HomePage() {
   const { getFeaturedProducts } = useProducts();
+  const { data: siteData, loading: siteLoading } = useSiteContent();
+  const { data: b2bData, loading: b2bLoading } = useB2BContent();
+  const { data: contactData, loading: contactLoading } = useContactContent();
+  const { data: productsData } = useProductsContent();
+
   const featuredProducts = getFeaturedProducts().slice(0, 4);
+  const isLoading = siteLoading || b2bLoading || contactLoading;
+
+  if (isLoading || !siteData || !b2bData || !contactData) {
+    return (
+      <div className="min-h-screen bg-farina-100 flex items-center justify-center">
+        <div className="text-center">
+          <Wheat className="w-16 h-16 text-granite-600 animate-pulse mx-auto mb-4" />
+          <p className="text-granite-600">Caricamento...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>
       <SEO />
-      
+
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
         {/* Background */}
         <div className="absolute inset-0 bg-gradient-warm" />
-        
+
         {/* Decorative elements */}
         <div className="absolute top-20 right-0 w-96 h-96 bg-granite-600/5 rounded-full blur-3xl" />
         <div className="absolute bottom-20 left-0 w-80 h-80 bg-forno-400/5 rounded-full blur-3xl" />
-        
+
         {/* Wheat pattern */}
         <div className="absolute inset-0 opacity-[0.02]" style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l30 30-30 30L0 30z' fill='%238B6F47' fill-opacity='1'/%3E%3C/svg%3E")`,
@@ -56,32 +81,32 @@ export function HomePage() {
               <motion.div variants={fadeInUp} className="mb-6">
                 <span className="inline-flex items-center gap-2 px-4 py-2 bg-granite-600/10 rounded-full text-granite-600 text-sm font-medium">
                   <Wheat className="w-4 h-4" />
-                  Dal 1979
+                  {siteData.hero.badge}
                 </span>
               </motion.div>
 
-              <motion.h1 
+              <motion.h1
                 variants={fadeInUp}
                 className="font-display text-display-xl text-granite-950 mb-6"
               >
-                {heroContent.title}
+                {siteData.hero.title}
               </motion.h1>
 
-              <motion.p 
+              <motion.p
                 variants={fadeInUp}
                 className="font-accent text-2xl md:text-3xl text-granite-600 italic mb-6"
               >
-                {heroContent.subtitle}
+                {siteData.hero.subtitle}
               </motion.p>
 
-              <motion.p 
+              <motion.p
                 variants={fadeInUp}
                 className="text-lg text-granite-700 mb-10 max-w-xl mx-auto lg:mx-0"
               >
-                {heroContent.description}
+                {siteData.hero.description}
               </motion.p>
 
-              <motion.div 
+              <motion.div
                 variants={fadeInUp}
                 className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
               >
@@ -89,14 +114,14 @@ export function HomePage() {
                   to="/prodotti"
                   className="btn-primary text-lg px-8 py-4"
                 >
-                  Scopri i Prodotti
+                  {siteData.hero.ctaPrimary}
                   <ArrowRight className="w-5 h-5" />
                 </Link>
                 <Link
                   to="/ristoranti"
                   className="btn-secondary text-lg px-8 py-4"
                 >
-                  Sei un Ristorante?
+                  {siteData.hero.ctaSecondary}
                 </Link>
               </motion.div>
             </motion.div>
@@ -111,7 +136,7 @@ export function HomePage() {
               <div className="relative aspect-square max-w-lg mx-auto">
                 {/* Glow effect */}
                 <div className="absolute inset-0 bg-gradient-radial from-granite-600/20 to-transparent rounded-full blur-2xl" />
-                
+
                 {/* Logo */}
                 <motion.img
                   src="/images/logo.jpg"
@@ -158,47 +183,29 @@ export function HomePage() {
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                icon: Wheat,
-                title: 'Lievito Madre',
-                description: 'Il nostro lievito madre ha più di 40 anni. Ogni giorno lo nutriamo con cura.',
-              },
-              {
-                icon: Clock,
-                title: '24 Ore di Lievitazione',
-                description: 'Non esistono scorciatoie. I nostri impasti lievitano naturalmente per 24 ore.',
-              },
-              {
-                icon: Truck,
-                title: 'Consegne Puntuali',
-                description: 'Ogni mattina, dalle 5:30, il pane fresco arriva nei locali di Milano.',
-              },
-              {
-                icon: Award,
-                title: 'Dal 1979',
-                description: 'Oltre 40 anni di esperienza, la stessa passione del primo giorno.',
-              },
-            ].map((feature, index) => (
-              <motion.div
-                key={feature.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="text-center p-6"
-              >
-                <div className="w-16 h-16 mx-auto mb-6 bg-granite-100 rounded-2xl flex items-center justify-center text-granite-600">
-                  <feature.icon className="w-8 h-8" />
-                </div>
-                <h3 className="font-display text-xl font-semibold text-granite-950 mb-3">
-                  {feature.title}
-                </h3>
-                <p className="text-granite-600">
-                  {feature.description}
-                </p>
-              </motion.div>
-            ))}
+            {siteData.features.map((feature, index) => {
+              const IconComponent = featureIcons[feature.title] || Wheat;
+              return (
+                <motion.div
+                  key={feature.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="text-center p-6"
+                >
+                  <div className="w-16 h-16 mx-auto mb-6 bg-granite-100 rounded-2xl flex items-center justify-center text-granite-600">
+                    <IconComponent className="w-8 h-8" />
+                  </div>
+                  <h3 className="font-display text-xl font-semibold text-granite-950 mb-3">
+                    {feature.title}
+                  </h3>
+                  <p className="text-granite-600">
+                    {feature.description}
+                  </p>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -246,7 +253,7 @@ export function HomePage() {
                 </div>
                 <div className="p-5">
                   <span className="text-xs text-granite-500 uppercase tracking-wider">
-                    {productCategories.find(c => c.id === product.category)?.name}
+                    {productsData?.categories.find(c => c.id === product.category)?.name}
                   </span>
                   <h3 className="font-display text-lg font-semibold text-granite-950 mt-1 mb-2">
                     {product.name}
@@ -272,20 +279,20 @@ export function HomePage() {
             >
               <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full text-forno-400 text-sm font-medium mb-6">
                 <ChefHat className="w-4 h-4" />
-                Per Professionisti
+                {b2bData.hero.badge}
               </span>
               <h2 className="font-display text-display-md mb-6">
-                {b2bContent.title}
+                {b2bData.hero.title}
               </h2>
               <p className="text-xl text-granite-300 mb-8">
-                {b2bContent.intro}
+                {b2bData.hero.description}
               </p>
 
               <div className="grid sm:grid-cols-2 gap-6 mb-10">
-                {b2bContent.benefits.map((benefit) => (
+                {b2bData.benefits.map((benefit) => (
                   <div key={benefit.title} className="flex gap-4">
-                    <div className="w-12 h-12 bg-granite-800 rounded-xl flex items-center justify-center flex-shrink-0 text-2xl">
-                      {benefit.icon}
+                    <div className="w-12 h-12 bg-granite-800 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <Truck className="w-6 h-6 text-forno-400" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-white mb-1">{benefit.title}</h3>
@@ -312,7 +319,7 @@ export function HomePage() {
             >
               {/* Testimonials */}
               <div className="space-y-6">
-                {b2bContent.testimonials.map((testimonial, index) => (
+                {b2bData.testimonials.map((testimonial, index) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, y: 20 }}
@@ -344,26 +351,25 @@ export function HomePage() {
             className="max-w-3xl mx-auto text-center"
           >
             <h2 className="font-display text-display-md text-granite-950 mb-6">
-              Vuoi Assaggiare la Differenza?
+              {siteData.cta.title}
             </h2>
             <p className="text-xl text-granite-600 mb-10">
-              Contattaci per un preventivo personalizzato o per richiedere una prova gratuita 
-              dei nostri prodotti.
+              {siteData.cta.description}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href={siteConfig.whatsapp}
+                href={contactData.info.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-whatsapp text-lg px-8 py-4"
               >
-                Scrivici su WhatsApp
+                {siteData.cta.buttonWhatsapp}
               </a>
               <Link
                 to="/contatti"
                 className="btn-secondary text-lg px-8 py-4"
               >
-                Contattaci
+                {siteData.cta.buttonContact}
               </Link>
             </div>
           </motion.div>

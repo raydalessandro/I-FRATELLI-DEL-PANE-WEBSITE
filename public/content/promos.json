@@ -1,0 +1,17 @@
+{
+  "activeBanner": {
+    "enabled": false,
+    "text": "Prova gratuita per ristoranti! Contattaci su WhatsApp.",
+    "link": null,
+    "bgColor": "#E85D04",
+    "textColor": "#FFFFFF"
+  },
+  "homePromo": {
+    "enabled": false,
+    "title": "Offerta Speciale",
+    "description": "Descrizione dell'offerta",
+    "validUntil": "2025-02-28",
+    "ctaText": "Scopri di più",
+    "ctaLink": "/contatti"
+  }
+}

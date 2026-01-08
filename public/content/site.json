@@ -1,0 +1,63 @@
+{
+  "meta": {
+    "siteTitle": "Il Pane dei Fratelli",
+    "siteDescription": "Panificio artigianale a Milano, zona Isola. Aperti 24h, 7 giorni su 7. Lievito madre, pane fresco dal 1979.",
+    "ogImage": "/images/og-image.jpg"
+  },
+  "hero": {
+    "badge": "Dal 1979 • Aperti 24h",
+    "title": "Il Pane dei Fratelli",
+    "subtitle": "Pane fresco, passione antica",
+    "description": "Nel cuore di Milano, a due passi da Porta Garibaldi, il nostro forno non si ferma mai. Pane artigianale, lievito madre, e la stessa passione dal 1979.",
+    "ctaPrimary": "Scopri i Prodotti",
+    "ctaSecondary": "Sei un Ristorante?"
+  },
+  "features": [
+    {
+      "title": "Lievito Madre",
+      "description": "Il nostro lievito madre ha più di 40 anni. Ogni giorno lo nutriamo con cura."
+    },
+    {
+      "title": "24 Ore di Lievitazione",
+      "description": "Non esistono scorciatoie. I nostri impasti lievitano naturalmente."
+    },
+    {
+      "title": "Aperti 24h",
+      "description": "Giorno e notte, il nostro forno è sempre acceso. Pane fresco a qualsiasi ora."
+    },
+    {
+      "title": "Dal 1979",
+      "description": "Oltre 40 anni di esperienza, la stessa passione del primo giorno."
+    }
+  ],
+  "about": {
+    "title": "Chi Siamo",
+    "subtitle": "Non facciamo pane. Siamo pane.",
+    "intro": "Tre fratelli, un forno, una promessa: esserci sempre.",
+    "story": [
+      "Dal 1979 il nostro forno non si è mai spento. Siamo nati in Via Ugo Bassi, nel cuore del quartiere Isola, quando ancora non era il quartiere alla moda che è oggi.",
+      "Siamo rimasti gli stessi: mani nella farina, sveglia alle 3 di notte, e la porta sempre aperta. Per chi torna tardi, per chi parte presto, per chi ha semplicemente voglia di pane buono.",
+      "Il nostro segreto? Non ce n'è uno. Solo lievito madre, tempo, e la testardaggine di fare le cose come si facevano una volta."
+    ],
+    "values": [
+      {
+        "title": "Lievito Madre",
+        "description": "Il cuore di ogni nostro pane. Lo nutriamo ogni giorno da oltre 40 anni."
+      },
+      {
+        "title": "Tempo",
+        "description": "Non esistono scorciatoie. Ogni impasto riposa almeno 24 ore."
+      },
+      {
+        "title": "Presenza",
+        "description": "24 ore su 24, 7 giorni su 7. Ci siamo sempre."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Vuoi Assaggiare la Differenza?",
+    "description": "Contattaci per un preventivo personalizzato o passa a trovarci. Siamo aperti 24 ore su 24.",
+    "buttonWhatsapp": "Scrivici su WhatsApp",
+    "buttonContact": "Contattaci"
+  }
+}

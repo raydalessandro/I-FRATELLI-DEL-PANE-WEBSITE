@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion';
 import { MessageCircle } from 'lucide-react';
-import { siteConfig } from '../../data/site';
+import { useContactContent } from '../../hooks/useContent';
 
 export function WhatsAppFloat() {
+  const { data: contactData } = useContactContent();
+
   const handleClick = () => {
     // Track click if analytics is available
     if (typeof window !== 'undefined' && 'gtag' in window) {
@@ -13,9 +15,13 @@ export function WhatsAppFloat() {
     }
   };
 
+  if (!contactData) {
+    return null; // Don't show if data not loaded yet
+  }
+
   return (
     <motion.a
-      href={`${siteConfig.whatsapp}?text=${encodeURIComponent(siteConfig.whatsappMessage)}`}
+      href={contactData.info.whatsapp}
       target="_blank"
       rel="noopener noreferrer"
       onClick={handleClick}
@@ -39,12 +45,12 @@ export function WhatsAppFloat() {
     >
       {/* Pulse animation */}
       <span className="absolute inset-0 rounded-full bg-whatsapp-500 animate-ping opacity-30" />
-      
+
       {/* Icon */}
       <MessageCircle className="w-6 h-6 md:w-7 md:h-7 relative z-10" />
-      
+
       {/* Tooltip */}
-      <span 
+      <span
         className="
           absolute right-full mr-4 px-3 py-2
           bg-granite-950 text-white text-sm font-medium

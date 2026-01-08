@@ -1,0 +1,36 @@
+{
+  "hero": {
+    "title": "Contattaci",
+    "description": "Siamo a due passi da Porta Garibaldi. Passa a trovarci o scrivici, siamo aperti 24 ore su 24."
+  },
+  "info": {
+    "address": {
+      "street": "Via Ugo Bassi, 30",
+      "cap": "20159",
+      "city": "Milano MI",
+      "zone": "Isola",
+      "note": "5 minuti a piedi da Milano Porta Garibaldi"
+    },
+    "phone": "+39 328 610 4777",
+    "email": "info@ilpanedeifratelli.it",
+    "whatsapp": "https://wa.me/393286104777",
+    "hours": {
+      "store": "Aperti 24 ore su 24, 7 giorni su 7",
+      "deliveries": "Consegne B2B: 05:30 - 08:00"
+    }
+  },
+  "links": {
+    "googleMaps": "https://www.google.com/maps?daddr=Via+Ugo+Bassi,+30,+20159+Milano+MI",
+    "googleBusiness": "https://share.google/TGaJEd0Izz8oLyFNS",
+    "googleReviews": "https://www.google.com/search?q=Il+Pane+Dei+Fratelli+Panificio+Recensioni"
+  },
+  "form": {
+    "title": "Inviaci un Messaggio",
+    "submitButton": "Invia Messaggio",
+    "successMessage": "Messaggio inviato! Ti risponderemo il prima possibile."
+  },
+  "mapEmbed": {
+    "lat": 45.4906,
+    "lng": 9.1874
+  }
+}

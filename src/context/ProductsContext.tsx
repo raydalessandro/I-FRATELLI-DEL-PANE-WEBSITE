@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useReducer, useEffect, useCallback } from 'react';
 import type { Product, ProductCategory } from '../types';
-import { initialProducts, generateProductId, createProductSlug } from '../data/products';
+import { generateProductId, createProductSlug } from '../data/products';
+import { useProductsContent } from '../hooks/useContent';
 
 // ============================================
 // TYPES
@@ -99,11 +100,8 @@ function productsReducer(state: ProductsState, action: ProductsAction): Products
       return { ...state, error: action.payload, isLoading: false };
       
     case 'RESET_TO_INITIAL':
-      return {
-        ...state,
-        products: initialProducts,
-        lastUpdated: new Date().toISOString(),
-      };
+      // This is now handled in the resetToInitial callback
+      return state;
       
     default:
       return state;
@@ -126,32 +124,43 @@ interface ProductsProviderProps {
 
 export function ProductsProvider({ children }: ProductsProviderProps) {
   const [state, dispatch] = useReducer(productsReducer, initialState);
+  const { data: productsData, loading: productsLoading, error: productsError } = useProductsContent();
 
-  // Load products from localStorage on mount
+  // Load products from localStorage or JSON on mount
   useEffect(() => {
+    if (productsLoading) return;
+
+    if (productsError) {
+      console.error('Error loading products from JSON:', productsError);
+      dispatch({ type: 'SET_ERROR', payload: 'Errore nel caricamento dei prodotti' });
+      return;
+    }
+
+    if (!productsData) return;
+
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
-      
+
       if (stored) {
         const parsed = JSON.parse(stored);
-        
+
         // Check version compatibility
         if (parsed.version === STORAGE_VERSION && Array.isArray(parsed.products)) {
           dispatch({ type: 'SET_PRODUCTS', payload: parsed.products });
         } else {
-          // Version mismatch, use initial products
-          dispatch({ type: 'SET_PRODUCTS', payload: initialProducts });
+          // Version mismatch, use products from JSON
+          dispatch({ type: 'SET_PRODUCTS', payload: productsData.products });
         }
       } else {
-        // No stored data, use initial products
-        dispatch({ type: 'SET_PRODUCTS', payload: initialProducts });
+        // No stored data, use products from JSON
+        dispatch({ type: 'SET_PRODUCTS', payload: productsData.products });
       }
     } catch (error) {
       console.error('Error loading products from localStorage:', error);
       dispatch({ type: 'SET_ERROR', payload: 'Errore nel caricamento dei prodotti' });
-      dispatch({ type: 'SET_PRODUCTS', payload: initialProducts });
+      dispatch({ type: 'SET_PRODUCTS', payload: productsData.products });
     }
-  }, []);
+  }, [productsData, productsLoading, productsError]);
 
   // Save products to localStorage whenever they change
   useEffect(() => {
@@ -196,8 +205,10 @@ export function ProductsProvider({ children }: ProductsProviderProps) {
   }, []);
 
   const resetToInitial = useCallback(() => {
-    dispatch({ type: 'RESET_TO_INITIAL' });
-  }, []);
+    if (productsData?.products) {
+      dispatch({ type: 'SET_PRODUCTS', payload: productsData.products });
+    }
+  }, [productsData]);
 
   // Getters
   const getProductById = useCallback((id: string) => {
