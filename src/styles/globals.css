@@ -1,0 +1,340 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   GLOBAL STYLES - Il Pane dei Fratelli
+   ============================================ */
+
+@layer base {
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Focus styles for accessibility */
+  :focus-visible {
+    outline: 2px solid theme('colors.granite.600');
+    outline-offset: 2px;
+  }
+
+  /* Selection styling */
+  ::selection {
+    background-color: theme('colors.granite.600');
+    color: white;
+  }
+
+  /* Body base styles */
+  body {
+    @apply bg-farina-100 text-granite-950 font-body;
+    overflow-x: hidden;
+  }
+
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-semibold tracking-tight;
+  }
+
+  /* Links */
+  a {
+    @apply transition-colors duration-200;
+  }
+
+  /* Images */
+  img {
+    @apply max-w-full h-auto;
+  }
+}
+
+@layer components {
+  /* ============================================
+     BUTTONS
+     ============================================ */
+  
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 
+           px-6 py-3 rounded-lg font-medium
+           transition-all duration-300 ease-out
+           focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2;
+  }
+
+  .btn-primary {
+    @apply btn bg-granite-600 text-white
+           hover:bg-granite-700 hover:shadow-warm-lg hover:-translate-y-0.5
+           focus-visible:ring-granite-600;
+  }
+
+  .btn-secondary {
+    @apply btn bg-transparent border-2 border-granite-600 text-granite-600
+           hover:bg-granite-600 hover:text-white
+           focus-visible:ring-granite-600;
+  }
+
+  .btn-whatsapp {
+    @apply btn bg-whatsapp-500 text-white
+           hover:bg-whatsapp-600 hover:shadow-lg hover:-translate-y-0.5
+           focus-visible:ring-whatsapp-500;
+  }
+
+  .btn-ghost {
+    @apply btn bg-transparent text-granite-600
+           hover:bg-granite-100
+           focus-visible:ring-granite-600;
+  }
+
+  /* ============================================
+     CARDS
+     ============================================ */
+
+  .card {
+    @apply bg-white rounded-2xl shadow-warm 
+           transition-all duration-300 ease-out
+           hover:shadow-warm-lg;
+  }
+
+  .card-elevated {
+    @apply card hover:-translate-y-1;
+  }
+
+  /* ============================================
+     INPUTS
+     ============================================ */
+
+  .input {
+    @apply w-full px-4 py-3 rounded-lg
+           bg-white border border-granite-200
+           text-granite-950 placeholder:text-granite-400
+           transition-all duration-200
+           focus:outline-none focus:border-granite-600 focus:ring-2 focus:ring-granite-600/20;
+  }
+
+  .input-error {
+    @apply border-red-500 focus:border-red-500 focus:ring-red-500/20;
+  }
+
+  .textarea {
+    @apply input min-h-[120px] resize-y;
+  }
+
+  /* ============================================
+     SECTION STYLES
+     ============================================ */
+
+  .section {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+
+  .section-sm {
+    @apply py-12 md:py-16 lg:py-20;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* ============================================
+     TYPOGRAPHY
+     ============================================ */
+
+  .prose-custom {
+    @apply text-granite-700 leading-relaxed;
+  }
+
+  .prose-custom p {
+    @apply mb-4;
+  }
+
+  .prose-custom strong {
+    @apply text-granite-950 font-semibold;
+  }
+
+  /* ============================================
+     DECORATIVE ELEMENTS
+     ============================================ */
+
+  .grain-overlay {
+    @apply pointer-events-none fixed inset-0 z-50 opacity-[0.03];
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+
+  .divider {
+    @apply w-24 h-1 bg-gradient-to-r from-granite-600 to-granite-400 rounded-full;
+  }
+
+  .divider-center {
+    @apply divider mx-auto;
+  }
+
+  /* ============================================
+     WHATSAPP FLOATING BUTTON
+     ============================================ */
+
+  .whatsapp-float {
+    @apply fixed bottom-6 right-6 z-40
+           w-14 h-14 md:w-16 md:h-16
+           bg-whatsapp-500 text-white
+           rounded-full shadow-lg
+           flex items-center justify-center
+           transition-all duration-300
+           hover:bg-whatsapp-600 hover:scale-110 hover:shadow-xl
+           focus:outline-none focus-visible:ring-4 focus-visible:ring-whatsapp-500/50;
+  }
+
+  .whatsapp-float::before {
+    content: '';
+    @apply absolute inset-0 rounded-full bg-whatsapp-500 animate-ping opacity-30;
+  }
+
+  /* ============================================
+     NAVIGATION
+     ============================================ */
+
+  .nav-link {
+    @apply relative text-granite-700 font-medium
+           transition-colors duration-200
+           hover:text-granite-600;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 
+           bg-granite-600 transition-all duration-300;
+  }
+
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    @apply w-full;
+  }
+
+  .nav-link.active {
+    @apply text-granite-600;
+  }
+
+  /* ============================================
+     PRODUCT CARD
+     ============================================ */
+
+  .product-card {
+    @apply card overflow-hidden group;
+  }
+
+  .product-card-image {
+    @apply aspect-square overflow-hidden bg-farina-200;
+  }
+
+  .product-card-image img {
+    @apply w-full h-full object-cover
+           transition-transform duration-500
+           group-hover:scale-105;
+  }
+
+  /* ============================================
+     ADMIN STYLES
+     ============================================ */
+
+  .admin-sidebar {
+    @apply bg-granite-950 text-white min-h-screen w-64;
+  }
+
+  .admin-nav-item {
+    @apply flex items-center gap-3 px-4 py-3
+           text-granite-300 transition-colors duration-200
+           hover:bg-granite-900 hover:text-white;
+  }
+
+  .admin-nav-item.active {
+    @apply bg-granite-800 text-white border-l-4 border-granite-600;
+  }
+
+  .admin-card {
+    @apply bg-white rounded-xl shadow-sm border border-granite-100 p-6;
+  }
+
+  .admin-table {
+    @apply w-full;
+  }
+
+  .admin-table th {
+    @apply text-left text-sm font-semibold text-granite-600 
+           px-4 py-3 border-b border-granite-200 bg-farina-50;
+  }
+
+  .admin-table td {
+    @apply px-4 py-4 border-b border-granite-100;
+  }
+
+  .admin-table tr:hover td {
+    @apply bg-farina-50;
+  }
+}
+
+@layer utilities {
+  /* Animation delays */
+  .animation-delay-100 { animation-delay: 100ms; }
+  .animation-delay-200 { animation-delay: 200ms; }
+  .animation-delay-300 { animation-delay: 300ms; }
+  .animation-delay-400 { animation-delay: 400ms; }
+  .animation-delay-500 { animation-delay: 500ms; }
+
+  /* Text balance for headings */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Aspect ratios */
+  .aspect-4\/3 {
+    aspect-ratio: 4 / 3;
+  }
+
+  .aspect-3\/4 {
+    aspect-ratio: 3 / 4;
+  }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+  }
+
+  .card {
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
