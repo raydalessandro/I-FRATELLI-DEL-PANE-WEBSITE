@@ -1,4 +1,4 @@
-import type { Product, ProductCategoryInfo } from '../types';
+import type { Product, ProductCategory, ProductCategoryInfo } from '../types';
 
 // ============================================
 // PRODUCT CATEGORIES

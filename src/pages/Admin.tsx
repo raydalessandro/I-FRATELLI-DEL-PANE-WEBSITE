@@ -19,7 +19,7 @@ import {
 import { useProducts } from '../context/ProductsContext';
 import { productCategories, generateProductId, createProductSlug } from '../data/products';
 import { Button, Input, Textarea, Select, Checkbox, Badge } from '../components/ui';
-import type { Product, ProductCategory } from '../types';
+import type { Product } from '../types';
 
 // Simple auth (in production, use proper auth)
 const ADMIN_PASSWORD = 'pane2024';
