@@ -8,19 +8,23 @@
   "benefits": [
     {
       "title": "Consegne Puntuali",
-      "description": "Ogni mattina dalle 5:30, pane fresco alla porta del tuo locale."
+      "description": "Ogni mattina dalle 5:30, pane fresco alla porta del tuo locale.",
+      "icon": "🚚"
     },
     {
       "title": "Sempre Fresco",
-      "description": "Sforniamo di notte per consegnare all'alba. Zero pane del giorno prima."
+      "description": "Sforniamo di notte per consegnare all'alba. Zero pane del giorno prima.",
+      "icon": "🥖"
     },
     {
       "title": "Prezzi Dedicati",
-      "description": "Listino riservato ai professionisti. Più ordini, più risparmi."
+      "description": "Listino riservato ai professionisti. Più ordini, più risparmi.",
+      "icon": "💰"
     },
     {
       "title": "Formati Custom",
-      "description": "Panini, pagnotte, formati speciali. Li facciamo come li vuoi tu."
+      "description": "Panini, pagnotte, formati speciali. Li facciamo come li vuoi tu.",
+      "icon": "🎯"
     }
   ],
   "advantages": [
