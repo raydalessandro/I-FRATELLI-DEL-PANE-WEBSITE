@@ -123,6 +123,7 @@ export function useB2BContent() {
     benefits: Array<{
       title: string;
       description: string;
+      icon: string;
     }>;
     advantages: string[];
     cta: {

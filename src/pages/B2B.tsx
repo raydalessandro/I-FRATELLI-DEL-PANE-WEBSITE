@@ -2,19 +2,22 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ChefHat, CheckCircle, MessageCircle } from 'lucide-react';
 import { SEO } from '../components/SEO';
-import { siteConfig, b2bContent } from '../data/site';
+import { siteConfig } from '../data/site';
+import { useB2BContent } from '../hooks/useContent';
 
 export function B2BPage() {
-  const advantages = [
-    'Consegne ogni mattina dalle 5:30',
-    'Pane sempre fresco, sfornato nella notte',
-    'Listino prezzi dedicato ai professionisti',
-    'Formati personalizzati su richiesta',
-    'Nessun minimo d\'ordine il primo mese',
-    'Prova gratuita senza impegno',
-    'Assistenza dedicata via WhatsApp',
-    'Fatturazione mensile',
-  ];
+  const { data: b2bContent, loading } = useB2BContent();
+
+  if (loading || !b2bContent) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-forno-400 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-granite-600">Caricamento...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -34,10 +37,10 @@ export function B2BPage() {
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
               <span className="inline-flex items-center gap-2 px-4 py-2 bg-forno-400/20 rounded-full text-forno-400 text-sm font-medium mb-6">
                 <ChefHat className="w-4 h-4" />
-                Per Professionisti
+                {b2bContent.hero.badge}
               </span>
-              <h1 className="font-display text-display-lg mb-6">{b2bContent.title}</h1>
-              <p className="text-xl text-granite-300 mb-8">{b2bContent.intro}</p>
+              <h1 className="font-display text-display-lg mb-6">{b2bContent.hero.title}</h1>
+              <p className="text-xl text-granite-300 mb-8">{b2bContent.hero.description}</p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a href={`${siteConfig.whatsapp}?text=${encodeURIComponent('Ciao, sono un ristoratore e vorrei informazioni sulle forniture.')}`} target="_blank" rel="noopener noreferrer" className="btn-whatsapp text-lg px-8 py-4">
                   <MessageCircle className="w-5 h-5" />
@@ -102,7 +105,7 @@ export function B2BPage() {
                 Un servizio completo pensato per le esigenze dei professionisti della ristorazione.
               </p>
               <ul className="space-y-4">
-                {advantages.map((item, index) => (
+                {b2bContent.advantages.map((item, index) => (
                   <motion.li key={index} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.05 }} className="flex items-center gap-3">
                     <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
                     <span className="text-granite-700">{item}</span>
@@ -114,19 +117,18 @@ export function B2BPage() {
             <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
               <div className="bg-white rounded-2xl p-8 shadow-warm-lg">
                 <h3 className="font-display text-2xl font-semibold text-granite-950 mb-6">
-                  Inizia con una Prova Gratuita
+                  {b2bContent.cta.title}
                 </h3>
                 <p className="text-granite-600 mb-6">
-                  Vogliamo che tu possa toccare con mano la qualità dei nostri prodotti. 
-                  Per questo offriamo una prima consegna gratuita, senza impegno.
+                  {b2bContent.cta.description}
                 </p>
                 <div className="space-y-4">
                   <a href={`${siteConfig.whatsapp}?text=${encodeURIComponent('Ciao, vorrei richiedere una prova gratuita per il mio locale.')}`} target="_blank" rel="noopener noreferrer" className="btn-whatsapp w-full justify-center">
                     <MessageCircle className="w-5 h-5" />
-                    Richiedi Prova Gratuita
+                    {b2bContent.cta.buttonWhatsapp}
                   </a>
                   <a href={`tel:${siteConfig.phoneClean}`} className="btn-secondary w-full justify-center">
-                    Oppure Chiamaci
+                    {b2bContent.cta.buttonPhone}
                   </a>
                 </div>
               </div>

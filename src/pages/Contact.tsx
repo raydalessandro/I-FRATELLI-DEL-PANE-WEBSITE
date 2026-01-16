@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Phone, Mail, Clock, MessageCircle, Send, CheckCircle } from 'lucide-react';
-import { siteConfig, contactContent, businessTypes } from '../data/site';
+import { businessTypes } from '../data/site';
+import { useContactContent } from '../hooks/useContent';
 import { SEO } from '../components/SEO';
 import { Button, Input, Textarea, Select, Checkbox } from '../components/ui';
 import type { ContactFormData } from '../types';
@@ -17,10 +18,22 @@ const initialFormData: ContactFormData = {
 };
 
 export function ContactPage() {
+  const { data: contactContent, loading } = useContactContent();
   const [formData, setFormData] = useState<ContactFormData>(initialFormData);
   const [errors, setErrors] = useState<Partial<Record<keyof ContactFormData, string>>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+
+  if (loading || !contactContent) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-forno-400 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-granite-600">Caricamento...</p>
+        </div>
+      </div>
+    );
+  }
 
   const validateForm = (): boolean => {
     const newErrors: Partial<Record<keyof ContactFormData, string>> = {};
@@ -103,10 +116,10 @@ export function ContactPage() {
             className="max-w-3xl"
           >
             <h1 className="font-display text-display-lg text-granite-950 mb-6">
-              {contactContent.title}
+              {contactContent.hero.title}
             </h1>
             <p className="text-xl text-granite-600">
-              {contactContent.intro}
+              {contactContent.hero.description}
             </p>
           </motion.div>
         </div>
@@ -129,11 +142,11 @@ export function ContactPage() {
                   Risposte Rapide?
                 </h3>
                 <p className="text-white/90 mb-4">
-                  Per risposte immediate, scrivici su WhatsApp. 
+                  Per risposte immediate, scrivici su WhatsApp.
                   Rispondiamo sempre entro poche ore.
                 </p>
                 <a
-                  href={siteConfig.whatsapp}
+                  href={contactContent.info.whatsapp}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-white text-whatsapp-600 px-5 py-2.5 rounded-lg font-medium hover:bg-white/90 transition-colors"
@@ -150,33 +163,34 @@ export function ContactPage() {
 
                 <div className="space-y-4">
                   <a
-                    href={siteConfig.social.googleMaps}
+                    href={contactContent.links.googleMaps}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-start gap-4 text-granite-700 hover:text-granite-600 transition-colors"
                   >
                     <MapPin className="w-5 h-5 mt-1 flex-shrink-0 text-granite-400" />
                     <div>
-                      <p className="font-medium">{siteConfig.address.street}</p>
-                      <p>{siteConfig.address.cap} {siteConfig.address.city}</p>
-                      <p className="text-sm text-granite-500">Zona {siteConfig.address.zone}</p>
+                      <p className="font-medium">{contactContent.info.address.street}</p>
+                      <p>{contactContent.info.address.cap} {contactContent.info.address.city}</p>
+                      <p className="text-sm text-granite-500">Zona {contactContent.info.address.zone}</p>
+                      <p className="text-sm text-granite-500 mt-1">{contactContent.info.address.note}</p>
                     </div>
                   </a>
 
                   <a
-                    href={`tel:${siteConfig.phoneClean}`}
+                    href={`tel:${contactContent.info.phone.replace(/\s/g, '')}`}
                     className="flex items-center gap-4 text-granite-700 hover:text-granite-600 transition-colors"
                   >
                     <Phone className="w-5 h-5 flex-shrink-0 text-granite-400" />
-                    <span className="font-medium">{siteConfig.phone}</span>
+                    <span className="font-medium">{contactContent.info.phone}</span>
                   </a>
 
                   <a
-                    href={`mailto:${siteConfig.email}`}
+                    href={`mailto:${contactContent.info.email}`}
                     className="flex items-center gap-4 text-granite-700 hover:text-granite-600 transition-colors"
                   >
                     <Mail className="w-5 h-5 flex-shrink-0 text-granite-400" />
-                    <span className="font-medium">{siteConfig.email}</span>
+                    <span className="font-medium">{contactContent.info.email}</span>
                   </a>
                 </div>
 
@@ -186,16 +200,15 @@ export function ContactPage() {
                   <div className="flex items-start gap-4">
                     <Clock className="w-5 h-5 mt-1 flex-shrink-0 text-granite-400" />
                     <div>
-                      <p className="font-medium text-granite-950">Orari Negozio</p>
-                      <p className="text-sm text-granite-600">Lun - Sab: {siteConfig.hours.weekdays}</p>
-                      <p className="text-sm text-granite-600">Dom: {siteConfig.hours.sunday}</p>
+                      <p className="font-medium text-granite-950">Orari</p>
+                      <p className="text-sm text-granite-600">{contactContent.info.hours.store}</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
                     <Clock className="w-5 h-5 mt-1 flex-shrink-0 text-forno-400" />
                     <div>
                       <p className="font-medium text-granite-950">Consegne B2B</p>
-                      <p className="text-sm text-granite-600">{siteConfig.hours.deliveries}</p>
+                      <p className="text-sm text-granite-600">{contactContent.info.hours.deliveries}</p>
                     </div>
                   </div>
                 </div>
@@ -210,7 +223,7 @@ export function ContactPage() {
             >
               <div className="bg-white rounded-2xl p-8 shadow-warm">
                 <h3 className="font-display text-2xl font-semibold text-granite-950 mb-6">
-                  {contactContent.formTitle}
+                  {contactContent.form.title}
                 </h3>
 
                 {isSuccess ? (
@@ -330,7 +343,7 @@ export function ContactPage() {
       {/* Map */}
       <section className="h-96 bg-granite-200">
         <iframe
-          src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2797.5!2d${siteConfig.address.coordinates.lng}!3d${siteConfig.address.coordinates.lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDXCsDI5JzI2LjIiTiA5wrAxMScxNC42IkU!5e0!3m2!1sit!2sit!4v1234567890`}
+          src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2797.5!2d${contactContent.mapEmbed.lng}!3d${contactContent.mapEmbed.lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDXCsDI5JzI2LjIiTiA5wrAxMScxNC42IkU!5e0!3m2!1sit!2sit!4v1234567890`}
           width="100%"
           height="100%"
           style={{ border: 0 }}
